@@ -20,6 +20,7 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700" rel="stylesheet">
 
+
     <link rel="stylesheet" href="{{ asset('backend/css/bootstrap.min.css')}}" type="text/css" >
     <link rel="stylesheet" href="{{ asset('backend/css/waves.min.css')}}" type="text/css" media="all">
     <link rel="stylesheet" href="{{ asset('backend/css/feather.css')}}" type="text/css">
@@ -28,7 +29,10 @@
     <link rel="stylesheet" href="{{ asset('backend/css/style.css')}}" type="text/css" >
     <link rel="stylesheet" href="{{ asset('backend/css/widget.css')}}" type="text/css" >
 
- 
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css" type="text/css" >
+
+
 
 </head>
 
@@ -61,8 +65,6 @@
 
 
 
-
-
 <script data-cfasync="false" src="{{ asset('backend/js/email-decode.min.js')}}"></script>
 <script type="d2d1d6e2f87cbebdf4013b26-text/javascript" src="{{ asset('backend/js/jquery.min.js')}}"></script>
 <script type="d2d1d6e2f87cbebdf4013b26-text/javascript" src="{{ asset('backend/js/jquery-ui.min.js')}}"></script>
@@ -90,15 +92,24 @@
 <script type="d2d1d6e2f87cbebdf4013b26-text/javascript" src="{{ asset('backend/js/script.min.js')}}"></script>
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13" type="d2d1d6e2f87cbebdf4013b26-text/javascript"></script>
-<script type="d2d1d6e2f87cbebdf4013b26-text/javascript">
+
+
+
+
+
+
+<script src="{{ asset('backend/js/rocket-loader.min.js')}}" data-cf-settings="d2d1d6e2f87cbebdf4013b26-|49" defer=""></script></body>
+
+   @stack('scripts')
+
+  <script type="d2d1d6e2f87cbebdf4013b26-text/javascript">
+
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
   gtag('config', 'UA-23581568-13');
 </script>
-<script src="{{ asset('backend/js/rocket-loader.min.js')}}" data-cf-settings="d2d1d6e2f87cbebdf4013b26-|49" defer=""></script></body>
-
 
 </body>
 </html>
