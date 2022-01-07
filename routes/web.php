@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\categoryController;
+use App\Http\Controllers\itemController;
 use App\Http\Controllers\subCategoryController;
 use Illuminate\Support\Facades\Route;
 
@@ -46,7 +47,14 @@ Route::group(['prefix' => 'subcategories', 'as' => 'subcategory.'], function () 
 
 
 
+Route::group(['prefix' => 'items', 'as' => 'item.'], function () {
+    Route::get('/', [itemController::class, 'index'])->name('index');
+    Route::get('/create', [itemController::class, 'create'])->name('create');
+    Route::post('/store', [itemController::class, 'store'])->name('store');
+    Route::get('/edit/{id}', [itemController::class, 'edit'])->name('edit');
+    Route::post('/update/{id}', [itemController::class, 'update'])->name('update');
 
+});
 
 
 

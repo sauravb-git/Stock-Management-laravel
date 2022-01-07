@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Item;
 use App\Models\Subcategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 
-class subCategoryController extends Controller
+class itemController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +17,9 @@ class subCategoryController extends Controller
      */
     public function index()
     {
-
-        $subcategorys = Subcategory::with('category')->get();
-        return view('admin.sub-category.index', compact('subcategorys'));
+        //
+        $items = Item::all();
+        return view('admin.item.index', compact('items'));
     }
 
     /**
@@ -26,13 +27,14 @@ class subCategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create()
     {
         //
         $categorys = Category::all();
-        return view('admin.sub-category.create', compact('categorys'));
+        $subcategorys = Subcategory::all();
+        return view('admin.item.create', compact('categorys', 'subcategorys'));
     }
- 
+
     /**
      * Store a newly created resource in storage.
      *
@@ -41,12 +43,13 @@ class subCategoryController extends Controller
      */
     public function store(Request $request)
     {
+        //
 
-
-        $subCategory = new Subcategory;
-        $subCategory->category_id  =  $request->category_id;
-        $subCategory->subcategory_name  = $request->subcategory_name;
-        $subCategory->save();
+        $items = new Item;
+        $items->item = $request->item;
+        $items->category_id = $request->category_id;
+        $items->subcategory_id = $request->subcategory_id;
+        $items->save();
 
         return Redirect()->back();
     }
@@ -71,10 +74,12 @@ class subCategoryController extends Controller
     public function edit($id)
     {
         //
-        $categorys = Category::all();
-        $subCategory = Subcategory::find($id);
 
-        return view('admin.sub-category.edit', compact('subCategory', 'categorys'));
+        $item = Item::find($id);
+        $subcategorys = Subcategory::all();
+        $categorys = Category::all();
+
+        return view('admin.item.edit',compact('item','subcategorys','categorys'));
     }
 
     /**
@@ -88,12 +93,13 @@ class subCategoryController extends Controller
     {
         //
 
-        $subCategory =  Subcategory::find($id);
-        $subCategory->category_id = $request->category_id;
-        $subCategory->subcategory_name = $request->subcategory_name;
-        $subCategory->save();
+        $item = Item::find($id);
+        $item->item = $request->item;
+        $item->category_id = $request->category_id;
+        $item->subcategory_id = $request->subcategory_id;
+        $item->save();
 
-         return Redirect()->back();
+        return Redirect()->back();
 
     }
 
@@ -106,8 +112,5 @@ class subCategoryController extends Controller
     public function destroy($id)
     {
         //
-        $subCategory = Subcategory::find($id)->delete();
-
-        return Redirect()->back();
     }
 }

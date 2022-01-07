@@ -53,7 +53,7 @@
                                         <div class="card-block">
                                             <form action="{{ route('subcategory.update',$subCategory->id) }}"
                                                  method="POST">
-                                                 
+
                                                 @csrf
                                                 <div class="form-group row">
                                                     <label class="col-sm-2
